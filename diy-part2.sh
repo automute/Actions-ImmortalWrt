@@ -19,20 +19,20 @@ rm -rfv feeds/packages/net/v2ray-geodata
 rm -rfv feeds/packages/net/mosdns
 find ./ | grep Makefile | grep luci-app-mosdns | xargs rm -fv
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Replace Smartdns
 #./scripts/feeds uninstall luci-app-smartdns smartdns
 #./scripts/feeds install -a -p customsd
 
 # Replace luci-app-ssr-plus & Depends
-Replace_package="xray-core xray-plugin v2ray-core v2ray-plugin hysteria ipt2socks microsocks redsocks2 chinadns-ng dns2socks dns2tcp dnsproxy naiveproxy simple-obfs tcping tuic-client luci-app-ssr-plus lua-neturl gn trojan"
+Replace_package="ipt2socks microsocks redsocks2 chinadns-ng dns2socks dns2tcp dnsproxy naiveproxy simple-obfs tcping tuic-client lua-neturl gn"
 ./scripts/feeds uninstall ${Replace_package}
 ./scripts/feeds install -f -p helloworld ${Replace_package}
 
 # Replace shadowsocks-rust
-rm -fv feeds/packages/net/shadowsocks-rust/Makefile
-curl -L https://github.com/sbwml/openwrt_helloworld/raw/refs/heads/v5/shadowsocks-rust/Makefile -o feeds/packages/net/shadowsocks-rust/Makefile
+# rm -fv feeds/packages/net/shadowsocks-rust/Makefile
+# curl -L https://github.com/sbwml/openwrt_helloworld/raw/refs/heads/v5/shadowsocks-rust/Makefile -o feeds/packages/net/shadowsocks-rust/Makefile
 
 # Replace adguardhome
 #rm -rfv feeds/packages/net/adguardhome
